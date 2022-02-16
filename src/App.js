@@ -1,10 +1,9 @@
 import './App.css';
+import {OrderSummary} from './OrderSummary.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Order Sumary</h1>
-    </div>
+   <OrderSummary />
   );
 }
 
