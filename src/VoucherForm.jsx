@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import styled from 'styled-components';
 
 const VoucherFormContainer = styled.div`
@@ -22,12 +23,17 @@ const SubmitButton = styled.input`
 
 
 export const VoucherForm = () => {
+
+    const [inputValue, setInputValue] = useState();
+
+    console.log('This is input value', inputValue);
+
     return (
         <VoucherFormContainer>
             <form>
                 <label>
                     Enter your voucher Code Here
-                    <VoucherCodeInput />
+                    <VoucherCodeInput type="text" onInput={e => setInputValue(e.target.value)}/>
                     <SubmitButton value="Submit" />
                 </label>
             </form>
