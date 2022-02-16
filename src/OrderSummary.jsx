@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { VoucherForm } from './VoucherForm';
 
 const Heading = styled.h1`
     margin-bottom: 2rem;
@@ -8,7 +9,6 @@ const FlexContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem;
     height: 100vh;
     background-color: #959AFB;
 `;
@@ -19,6 +19,7 @@ const OrderSummaryContainer = styled.div`
     align-items: center;
     border: 1px solid black;
     width: 50%;
+    padding: 0 .5rem;
 `;
 
 const List = styled.ul`
@@ -50,6 +51,7 @@ export const OrderSummary = () => {
                     <ListItemContainer><ListItem>Item 2</ListItem><ListItem>£9.99</ListItem></ListItemContainer>
                     <ListItemContainer><ListItem>Total</ListItem><ListItem>£19.99</ListItem></ListItemContainer>
                 </List>
+                <VoucherForm />
             </OrderSummaryContainer>
         </FlexContainer>
     )
