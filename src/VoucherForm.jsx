@@ -25,16 +25,24 @@ const SubmitButton = styled.input`
 export const VoucherForm = () => {
 
     const [inputValue, setInputValue] = useState();
-
-    console.log('This is input value', inputValue);
+    const [errorMessage, setErrorMessage] = useState("");
+    
+    const onSubmit = (e) => {
+        e.preventDefault();
+        if(inputValue === undefined) {    
+            setErrorMessage("Please enter some text")
+        }
+        setInputValue("");
+    }
 
     return (
         <VoucherFormContainer>
-            <form>
+            <form onSubmit={onSubmit}>
                 <label>
                     Enter your voucher Code Here
-                    <VoucherCodeInput type="text" onInput={e => setInputValue(e.target.value)}/>
-                    <SubmitButton value="Submit" />
+                    <VoucherCodeInput type="text" value={inputValue} onInput={e => setInputValue(e.target.value) }/>
+                    <p>{errorMessage}</p>
+                    <SubmitButton type="submit" value="Submit" />
                 </label>
             </form>
        </VoucherFormContainer>
