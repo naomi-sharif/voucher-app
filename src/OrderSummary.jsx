@@ -1,4 +1,6 @@
+import {useState} from 'react';
 import styled from 'styled-components';
+
 import { VoucherForm } from './VoucherForm';
 
 const Heading = styled.h1`
@@ -42,17 +44,27 @@ const ListItem = styled.li`
 
 
 export const OrderSummary = () => {
+
+    const [discount, setDiscount] = useState(0);
+
+    const addDiscount = voucherCode => {
+        if(voucherCode === "HALFPRICE"){
+            setDiscount(0.5);
+        } 
+        return
+    }
+
     return (
         <FlexContainer>
             <Heading>Order Summary</Heading>
             <OrderSummaryContainer>
                 <List>
                     <ListItemContainer><ListItem>Item 1</ListItem><ListItem>£10</ListItem></ListItemContainer>
-                    <ListItemContainer><ListItem>Item 2</ListItem><ListItem>£9.99</ListItem></ListItemContainer>
-                    <ListItemContainer><ListItem>Total</ListItem><ListItem>£19.99</ListItem></ListItemContainer>
+                    <ListItemContainer><ListItem>Item 2</ListItem><ListItem>£10</ListItem></ListItemContainer>
+                    <ListItemContainer><ListItem>Total</ListItem><ListItem>£{20 * (1 - discount)}</ListItem></ListItemContainer>
                 </List>
-                <VoucherForm />
-            </OrderSummaryContainer>
+                <VoucherForm determineDiscount={addDiscount} />
+            </OrderSummaryContainer >
         </FlexContainer>
     )
 }

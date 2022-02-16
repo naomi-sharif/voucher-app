@@ -22,7 +22,7 @@ const SubmitButton = styled.input`
 
 
 
-export const VoucherForm = () => {
+export const VoucherForm = ({determineDiscount}) => {
 
     const [inputValue, setInputValue] = useState();
     const [errorMessage, setErrorMessage] = useState("");
@@ -30,9 +30,12 @@ export const VoucherForm = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         if(inputValue === undefined) {    
-            setErrorMessage("Please enter some text")
+            setErrorMessage("Please enter some text");
+            return;
         }
+        determineDiscount(inputValue);
         setInputValue("");
+        setErrorMessage("");
     }
 
     return (
