@@ -32,10 +32,11 @@ export const VoucherForm = ({determineDiscount}) => {
         if(inputValue === undefined) {    
             setErrorMessage("Please enter some text");
             return;
-        }
+        } else {
         determineDiscount(inputValue);
         setInputValue("");
         setErrorMessage("");
+        }
     }
 
     return (
